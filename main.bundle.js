@@ -38225,7 +38225,7 @@ var App = exports.App = function (_Component) {
             var _that = this;
             window.addEventListener('load', function () {
                 var waitForWeb3js = setInterval(function () {
-                    if (typeof web3 !== 'undefined') {
+                    if (typeof web3 !== 'undefined' && web3) {
                         window.web3 = new _web2.default(web3.currentProvider);
                         console.log(_that);
                         _that.setState(_extends({}, _that.state, { web3Completed: true }));
