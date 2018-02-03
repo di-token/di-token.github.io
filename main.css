@@ -1,3 +1,30 @@
 body {
     background: url('/assets/blockchain08.jpg');
 }
+
+.app{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.action-panel{
+    width: 400px;
+    background-color: #f5f5f5;
+}
+.info-panel ul {
+    padding-left: 10px;
+}
+
+.action-panel input{
+    margin-bottom: 15px;
+}
+.send-button{
+    text-align: center;
+}
+
+.wait-message{
+    text-align: center;
+}
