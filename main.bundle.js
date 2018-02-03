@@ -38224,15 +38224,15 @@ var App = exports.App = function (_Component) {
             console.log('app');
             var _that = this;
             window.addEventListener('load', function () {
-                if (typeof web3 !== 'undefined') {
-                    window.web3 = new _web2.default(web3.currentProvider);
-                } else {
-                    console.log('No web3? You should consider trying MetaMask!');
-                    window.web3 = new _web2.default(new _web2.default.providers.HttpProvider('http://localhost:8545'));
-                }
-                console.log(_that);
-                _that.setState(_extends({}, _that.state, { web3Completed: true }));
-                console.log(window.web3);
+                var waitForWeb3js = setInterval(function () {
+                    if (typeof web3 !== 'undefined') {
+                        window.web3 = new _web2.default(web3.currentProvider);
+                    }
+                    console.log(_that);
+                    _that.setState(_extends({}, _that.state, { web3Completed: true }));
+                    console.log(window.web3);
+                    clearInterval(waitForWeb3js);
+                }, 1000);
             });
         }
     }, {
