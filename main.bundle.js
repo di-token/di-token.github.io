@@ -38227,11 +38227,11 @@ var App = exports.App = function (_Component) {
                 var waitForWeb3js = setInterval(function () {
                     if (typeof web3 !== 'undefined') {
                         window.web3 = new _web2.default(web3.currentProvider);
+                        console.log(_that);
+                        _that.setState(_extends({}, _that.state, { web3Completed: true }));
+                        console.log(window.web3);
+                        clearInterval(waitForWeb3js);
                     }
-                    console.log(_that);
-                    _that.setState(_extends({}, _that.state, { web3Completed: true }));
-                    console.log(window.web3);
-                    clearInterval(waitForWeb3js);
                 }, 1000);
             });
         }
