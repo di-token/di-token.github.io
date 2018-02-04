@@ -38090,7 +38090,7 @@ var App = exports.App = function (_Component) {
         };
 
         _this.checkValidData = function () {
-            if (_this.state.tokenAddress.length === 40 && _this.state.targetAddress.length === 40) {
+            if (_this.state.tokenAddress.length === 42 && _this.state.targetAddress.length === 42) {
                 _this.setState(_extends({}, _this.state, { allowSend: true }));
             } else {
                 _this.setState(_extends({}, _this.state, { allowSend: false }));
@@ -38108,6 +38108,10 @@ var App = exports.App = function (_Component) {
                 return _this.getCurrentAccount(web3);
             }).then(function (_currentAccount) {
                 currentAccount = _currentAccount;
+                console.log('current account:');
+                console.log(currentAccount);
+                console.log('target address:');
+                console.log(_this.state.targetAddress);
                 return new Promise(function (resolve, reject) {
                     contract.initDimoToken(_this.state.targetAddress, { from: currentAccount }, function (err, res) {
                         if (err) {
@@ -38147,6 +38151,7 @@ var App = exports.App = function (_Component) {
                         reject(error);
                         return;
                     }
+                    console.log(result);
                     resolve(result[0]);
                 });
             });
@@ -38155,7 +38160,7 @@ var App = exports.App = function (_Component) {
         _this.waitForCompleteTransaction = function (web3, contract, targetAddess) {
             return new Promise(function (resolve, reject) {
                 var waiter = setInterval(function () {
-                    contract.balanceOf(_this.state.targetAddress, { from: _this.state.targetAddress }, function (err, res) {
+                    contract.balanceOf(_this.state.targetAddress, function (err, res) {
                         if (err) {
                             console.log(err);
                             return;
@@ -38185,12 +38190,12 @@ var App = exports.App = function (_Component) {
                         _react2.default.createElement(
                             'li',
                             null,
-                            'Enter token address in the first field (remove from address first two chars \'0x\' if exists)'
+                            'Enter token address in the first field'
                         ),
                         _react2.default.createElement(
                             'li',
                             null,
-                            'Enter targer address in the second field (remove from address first two chars \'0x\' if exists)'
+                            'Enter targer address in the second field'
                         ),
                         _react2.default.createElement(
                             'li',
